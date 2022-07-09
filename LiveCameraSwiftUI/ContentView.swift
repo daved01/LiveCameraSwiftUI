@@ -1,16 +1,11 @@
-//
-//  ContentView.swift
-//  LiveCameraSwiftUI
-//
-//  Created by David Kirchhoff on 2022-07-09.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var model = FrameHandler()
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        FrameView(image: model.frame)
+            .ignoresSafeArea()
     }
 }
 
