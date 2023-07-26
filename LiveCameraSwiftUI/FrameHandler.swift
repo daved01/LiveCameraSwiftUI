@@ -1,6 +1,7 @@
 import AVFoundation
 import CoreImage
 
+
 class FrameHandler: NSObject, ObservableObject {
     @Published var frame: CGImage?
     private var permissionGranted = true

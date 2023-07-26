@@ -1,10 +1,11 @@
 import SwiftUI
 
+
 struct ContentView: View {
-    @StateObject private var model = FrameHandler()
+    @StateObject private var frameHandler = FrameHandler()
     
     var body: some View {
-        FrameView(image: model.frame)
+        MetalView(frameHandler: frameHandler)
             .ignoresSafeArea()
     }
 }
