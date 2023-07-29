@@ -3,7 +3,7 @@ import CoreImage
 
 class FrameHandler: NSObject, ObservableObject {
     @Published var frame: CGImage?
-    private var permissionGranted = false
+    private var permissionGranted = true
     private let captureSession = AVCaptureSession()
     private let sessionQueue = DispatchQueue(label: "sessionQueue")
     private let context = CIContext()
@@ -11,7 +11,7 @@ class FrameHandler: NSObject, ObservableObject {
     
     override init() {
         super.init()
-        checkPermission()
+        self.checkPermission()
         sessionQueue.async { [unowned self] in
             self.setupCaptureSession()
             self.captureSession.startRunning()
@@ -21,14 +21,14 @@ class FrameHandler: NSObject, ObservableObject {
     func checkPermission() {
         switch AVCaptureDevice.authorizationStatus(for: .video) {
             case .authorized: // The user has previously granted access to the camera.
-                permissionGranted = true
+                self.permissionGranted = true
                 
             case .notDetermined: // The user has not yet been asked for camera access.
-                requestPermission()
+                self.requestPermission()
                 
         // Combine the two other cases into the default case
         default:
-            permissionGranted = false
+            self.permissionGranted = false
         }
     }
     
