@@ -1,5 +1,7 @@
 # Live Camera SwiftUI
 
+**Please note:** This repo is not maintained.
+
 Code from the [video](https://www.youtube.com/watch?v=cLnw5z8ZGqM&t=22s) which shows how to read frames from a phone's camera and display the feed on the screen using SwiftUI, without UIKit.
 
 ## Updates
